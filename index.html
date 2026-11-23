@@ -108,11 +108,12 @@ h1 em{font-style:normal;background:var(--ink);color:#fff;padding:0 10px 4px;disp
    <span class="badge" id="self" hidden>PARA TI, DE PARTE DE TI ✓</span>
    <h1 style="margin-top:14px">Toda la vida la pediste.<br><em>Ahora ponla tú.</em></h1>
    <div class="btns">
-    <a class="btn" id="spot" href="https://open.spotify.com/search" target="_blank" rel="noopener"></a>
+    <a class="btn" id="board" href="#" target="_blank" rel="noopener">📺 Mándala al tablero</a>
+    <a class="btn alt" id="spot" href="https://open.spotify.com/search" target="_blank" rel="noopener"></a>
     <button class="btn alt" id="mine" type="button" hidden>Ahora pide una para ti</button>
     <button class="btn alt" id="again" type="button">Pedir otra</button>
    </div>
-   <p class="hint" id="tip">Toma captura de pantalla de tu solicitud y compártela.</p>
+   <p class="hint" id="tip">Al tocar "Mándala al tablero" se abre un formulario con tu solicitud ya escrita: solo dale <b>Enviar</b> y sale al aire en la pantalla.</p>
   </div>
  </section>
 
@@ -146,6 +147,8 @@ h1 em{font-style:normal;background:var(--ink);color:#fff;padding:0 10px 4px;disp
   $('vPara').textContent=para;$('vDe').textContent=de;$('vCan').textContent=can;
   const selfish=norm(para)===norm(de)||['mi','mi misma','mi mismo','yo'].includes(norm(para));
   $('self').hidden=!selfish;$('mine').hidden=selfish;
+  const F='https://docs.google.com/forms/d/e/1FAIpQLSer6Uy9OaWCNKhuCXcYdRQmn9-_Ou19dY6EvGZBI8o1-bjHww/viewform?usp=pp_url';
+  $('board').href=F+'&entry.812794649='+encodeURIComponent(para)+'&entry.665801956='+encodeURIComponent(de)+'&entry.1119934066='+encodeURIComponent(can);
   const sp=$('spot');sp.href='https://open.spotify.com/search/'+encodeURIComponent(can);
   sp.textContent='';const ic=document.createElementNS('http://www.w3.org/2000/svg','svg');ic.setAttribute('viewBox','0 0 24 24');ic.innerHTML='<path fill="#1ED760" d="'+document.querySelector('.logo path').getAttribute('d')+'"/>';sp.appendChild(ic);sp.appendChild(document.createTextNode('Buscar «'+can+'» en Spotify'));
   const fin=$('final');fin.classList.remove('stamped','shake');show(3);
